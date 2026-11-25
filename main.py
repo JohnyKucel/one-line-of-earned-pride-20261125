@@ -23,6 +23,8 @@ def validate(text):
             "entry must be %d-%d characters, got %d"
             % (MIN_LENGTH, MAX_LENGTH, len(text))
         )
+    if "\n" in text or "\r" in text:
+        raise ValueError("entry must be a single line (no newline characters)")
     if not text.strip():
         raise ValueError("entry must not be only whitespace")
     return text
